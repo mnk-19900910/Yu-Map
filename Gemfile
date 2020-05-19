@@ -65,10 +65,8 @@ gem 'compass-rails', '3.1.0'
 gem 'sprockets', '3.7.2'
 gem 'devise'
 gem 'kaminari'
-<<<<<<< Updated upstream
-=======
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'font-awesome-rails'
 gem 'jquery-rails'
->>>>>>> Stashed changes
+
