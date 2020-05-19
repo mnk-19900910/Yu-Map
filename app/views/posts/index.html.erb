@@ -2,6 +2,11 @@
   <%= form.text_field :keyword, placeholder: "温泉を検索する", class: "search-input" %>
   <%= form.submit "検索", class: "search-btn" %>
 <% end %>
+<div class="top-contents">
+  <div class="top-contents__num">
+    現在<%= @posts_num.length %>件の湯処を紹介しています。
+  </div>
+</div>
 <div class="contents row">
   <% @posts.each do |post| %>
     <%= render partial: "post", locals: { post: post } %>

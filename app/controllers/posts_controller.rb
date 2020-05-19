@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.includes(:user).order("created_at DESC").page(params[:page]).per(5)
+    @posts_num = Post.includes(:user)
   end
 
   def new
