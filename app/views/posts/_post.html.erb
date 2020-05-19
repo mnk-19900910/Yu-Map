@@ -16,7 +16,7 @@
 </div>
 <div class="name">温泉名：<%= post.name %></div>
 <div class="location">場所：<%= post.location %></div>
-<div class="image">画像：<%= post.image %></div>
+<div class="content_post" style="background-image: url(<%= post.image %>);"></div>
 <a href="/users/<%= post.user.id %>">
   <span>投稿者：</span><%= post.user.name %>
 </a> 

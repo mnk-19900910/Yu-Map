@@ -12,15 +12,15 @@
       </ul>
     </div>
   <% end %>
-  <div class="name"><%= @post.name %></div>
-  <div class="location"><%= @post.location %></div>
-  <div class="image"><%= @post.image %></div>
+  <div class="name">温泉名：<%= @post.name %></div>
+  <div class="location">場所：<%= @post.location %></div>
+  <div class="image">画像：<%= @post.image %></div>
   <span class="name">
     <a href="/users/<%= @post.user.id %>">
-      <span>投稿者</span><%= @post.user.name %>
+      <span>投稿者：</span><%= @post.user.name %>
     </a>  
   </span>
-    <div class="container">
+  <div class="container">
     <% if current_user %>
       <%= form_with(model: [@post, @kuchikomi], local: true) do |form| %>
         <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
