@@ -3,6 +3,8 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :kuchikomis
 
+  mount_uploader :image, ImageUploader
+
   def self.search(search)
     if search
       Post.where('name LIKE(?)', "%#{search}%")

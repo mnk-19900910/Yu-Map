@@ -1,22 +1,25 @@
-<div class="more">
-  <span><%= image_tag 'arrow_top.png' %></span>
-  <ul class="more_list">
-    <li>
-      <%= link_to '詳細', "/posts/#{post.id}", method: :get %>
-    </li>
-    <% if user_signed_in? && current_user.id == post.user_id %>
-      <li>
-        <%= link_to '編集', "/posts/#{post.id}/edit", method: :get %>
-      </li>
-      <li>
-        <%= link_to '削除', "/posts/#{post.id}", method: :delete %>
-      </li>
-    <% end %>
-  </ul>
+<div class="contents">
+  <a class="contents__detail" href="/posts/<%= post.id %>%">
+    <%= image_tag post.image.to_s %>
+    <div class="contents__detail--name">温泉名：<%= post.name %></div>
+  </a>
+  <div class="contents__location">場所：<%= post.location %></div>
+  <a class="contents__user" href="/users/<%= post.user.id %>">
+    <div>投稿者：<%= post.user.name %></div>
+  </a>
+
+  <div class="contents__change">
+    <ul class="contents__change_list">
+      <% if user_signed_in? && current_user.id == post.user_id %>
+        <li>
+          <%= link_to '編集', "/posts/#{post.id}/edit", method: :get %>
+        </li>
+        <li>
+          <%= link_to '削除', "/posts/#{post.id}", method: :delete %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
-<div class="name">温泉名：<%= post.name %></div>
-<div class="location">場所：<%= post.location %></div>
-<div class="content_post" style="background-image: url(<%= post.image %>);"></div>
-<a href="/users/<%= post.user.id %>">
-  <span>投稿者：</span><%= post.user.name %>
-</a> 
+
+

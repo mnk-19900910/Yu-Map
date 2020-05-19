@@ -3,13 +3,15 @@
   <%= form.submit "検索", class: "search-btn" %>
 <% end %>
 <div class="top-contents">
-  <div class="top-contents__num">
-    現在<%= @posts_num.length %>件の湯処を紹介しています。
+  <div class="top-contents__in">
+    <div class="top-contents__in__num">
+      現在<%= @posts_num.length %>件の湯処を紹介しています。
+    </div>
+    <div class="top-contents__in__main">
+      <% @posts.each do |post| %>
+        <%= render partial: "post", locals: { post: post } %>
+      <% end %>
+    </div>
   </div>
-</div>
-<div class="contents row">
-  <% @posts.each do |post| %>
-    <%= render partial: "post", locals: { post: post } %>
-  <% end %>
   <%= paginate(@posts) %>
 </div>
