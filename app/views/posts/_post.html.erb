@@ -9,13 +9,20 @@
   </a>
 
   <div class="contents__change">
-    <ul class="contents__change_list">
+    <ul class="contents__change__list">
       <% if user_signed_in? && current_user.id == post.user_id %>
+        
         <li>
-          <%= link_to '編集', "/posts/#{post.id}/edit", method: :get %>
+          <%= link_to "/posts/#{post.id}/edit", method: :get, class: 'contents-btn' do %>
+            <i class="fa fa-caret-right"></i>
+            <span>編集</span>
+          <% end %>
         </li>
         <li>
-          <%= link_to '削除', "/posts/#{post.id}", method: :delete %>
+          <%= link_to "/posts/#{post.id}", method: :delete, class: 'contents-btn' do %>
+            <i class="fa fa-caret-right"></i>
+            <span>削除</span>
+          <% end %>
         </li>
       <% end %>
     </ul>
