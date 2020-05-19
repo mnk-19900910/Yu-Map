@@ -14,9 +14,9 @@
     <% end %>
   </ul>
 </div>
-<div class="name"><%= post.name %></div>
-<div class="location"><%= post.location %></div>
-<div class="image"><%= post.image %></div>
+<div class="name">温泉名：<%= post.name %></div>
+<div class="location">場所：<%= post.location %></div>
+<div class="image">画像：<%= post.image %></div>
 <a href="/users/<%= post.user.id %>">
-  <span>投稿者</span><%= post.user.name %>
+  <span>投稿者：</span><%= post.user.name %>
 </a> 
