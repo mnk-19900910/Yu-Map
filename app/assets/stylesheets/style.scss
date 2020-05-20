@@ -226,15 +226,16 @@ header.header {
       text-align: center;
       margin-bottom: 25px;
     }
-    // &__main{
-    // }
+    &__main{
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
 }
 
 .contents{
-  width: 30%;
-  float: left;
-  margin: 15px 10px;
+  width: 33%;
+  padding: 15px 10px;
   &__detail{
 
     &--name{
