@@ -1,7 +1,10 @@
 class KuchikomisController < ApplicationController
   def create
-    kuchikomi = Kuchikomi.create(kuchikomi_params)
-    redirect_to "/posts/#{kuchikomi.post.id}"
+    @kuchikomi = Kuchikomi.create(kuchikomi_params)
+    respond_to do |format|
+      format.html { redirect_to "/posts/#{@kuchikomi.post.id}"  }
+      format.json
+    end
   end
 
   private
