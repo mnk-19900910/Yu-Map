@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :show]
-  before_action :move_to_index, except: [:index, :show]
+  before_action :move_to_index, except: [:index, :show ,:search]
 
   def index
     @posts = Post.includes(:user).order("created_at DESC").page(params[:page]).per(6)
@@ -31,6 +31,14 @@ class PostsController < ApplicationController
   def show
     @kuchikomi = Kuchikomi.new
     @kuchikomis = @post.kuchikomis.includes(:user)
+  end
+  
+  def search
+    @posts = Post.search(params[:keyword])
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   private
