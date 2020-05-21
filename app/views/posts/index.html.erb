@@ -7,6 +7,9 @@
     <div class="top-contents__in__num">
       現在<%= @posts_num.length %>件の湯処を紹介しています。
     </div>
+<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
     <div class="top-contents__in__main">
       <% @posts.each do |post| %>
         <%= render partial: "post", locals: { post: post } %>

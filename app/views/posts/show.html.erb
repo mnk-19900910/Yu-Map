@@ -20,6 +20,11 @@
       <span>投稿者：</span><%= @post.user.name %>
     </a>  
   </span>
+
+<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
   <div class="container">
     <% if current_user %>
       <%= form_with(model: [@post, @kuchikomi], local: true, id: "new_kuchikomi") do |form| %>
