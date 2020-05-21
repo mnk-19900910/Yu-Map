@@ -5,7 +5,9 @@ $(function() {
   function appendPost(post) {
     var html = `
     <div class="contents">
+    <a class="contents__detail" href="/posts/${ post.id }">
     <div class="contents__detail--name">温泉名：${ post.name }</div>
+    </a>
   <div class="contents__location">場所：${ post.location }</div>
   <a class="contents__user" href="/users/${ post.user_id }">
     <div>投稿者：${ post.user_name }</div>
