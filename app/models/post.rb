@@ -1,7 +1,8 @@
 class Post < ApplicationRecord
-  validates :location, presence: true
+  validates :name, :location, presence: true
   belongs_to :user
   has_many :kuchikomis
+
 
   mount_uploader :image, ImageUploader
 
