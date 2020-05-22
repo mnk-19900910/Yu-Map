@@ -1,0 +1,5 @@
+<%= form_for @tags do |f| %>
+  <%= f.text_field :text, placeholder: "新しいタグの名前" %>
+  <%= f.collection_check_boxes :post_ids, Post.all, :id, :name %>
+  <%= f.submit "Save"%>
+<% end %>

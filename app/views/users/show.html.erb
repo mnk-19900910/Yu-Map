@@ -1,8 +1,16 @@
-<div class="contents row">
-  <p><%= @name %>さんの投稿一覧</p>
 
-  <% @posts.each do |post| %>
-    <%= render partial: "posts/post", locals: { post: post } %>
-  <% end %>
+
+<div class="top-contents">
+  <p><%= @name %>さんの投稿一覧</p>
+  <p>現在<%= @posts.length %>件の湯処を紹介しています。</p>
+  
+  <div class="top-contents__in">
+
+    <div class="top-contents__in__main">
+      <% @posts.each do |post| %>
+        <%= render partial: "posts/post", locals: { post: post } %>
+      <% end %>
+    </div>
+  </div>
   <%= paginate(@posts) %>
 </div>
