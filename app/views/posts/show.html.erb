@@ -1,25 +1,24 @@
 <div class ="contents row">
-  <% if user_signed_in? && current_user.id == @post.user_id %>
-    <div class="more">
-      <span><%= image_tag 'arrow_top.png' %></span>
-      <ul class="more_list">
-        <li>
-          <%= link_to '編集', "/posts/#{@post.id}/edit", method: :get %>
-        </li>
-        <li>
-          <%= link_to '削除', "/posts/#{@post.id}", method: :delete %>
-        </li>
-      </ul>
+  <%= image_tag @post.image.to_s %>
+  <div class="contents__detail--name">温泉名：<%= @post.name %></div>
+  <div class="contents__location">場所：<%= @post.location %></div>
+  <a class="contents__user" href="/users/<%= @post.user.id %>">
+    <div>投稿者：<%= @post.user.name %></div>
+  </a>
+
+    <div class="tags">
+      <h4>＜タグ一覧＞</h4>
+      <% if @tags %>
+        <% @tags.each do |tag| %>
+          <p>
+            <%= tag.text %>
+          </p>
+        <% end %>
+      <% end %>
     </div>
-  <% end %>
-  <div class="name">温泉名：<%= @post.name %></div>
-  <div class="location">場所：<%= @post.location %></div>
-  <div class="image">画像：<%= @post.image %></div>
-  <span class="name">
-    <a href="/users/<%= @post.user.id %>">
-      <span>投稿者：</span><%= @post.user.name %>
-    </a>  
-  </span>
+
+
+
   <div class="container">
     <% if current_user %>
       <%= form_with(model: [@post, @kuchikomi], local: true, id: "new_kuchikomi") do |form| %>

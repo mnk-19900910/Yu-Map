@@ -31,6 +31,8 @@ class PostsController < ApplicationController
   def show
     @kuchikomi = Kuchikomi.new
     @kuchikomis = @post.kuchikomis.includes(:user)
+    @tag = Tag.new
+    @tags = @post.tags.includes(:user)
   end
   
   def search
