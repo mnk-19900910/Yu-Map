@@ -24,7 +24,7 @@ Things you may want to cover:
 * ...
 
 
-# Yu-Map DB設計
+# Yu-Map DB設計(2020/05/22)
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
