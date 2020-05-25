@@ -220,11 +220,11 @@ header.header {
   display: inline-block;
   padding: 0.25em 0.5em;
   text-decoration: none;
-  color: #00BCD4;
+  color: $accent;
   background: #ECECEC;
   transition: .4s;
   &:hover {
-    background: #00bcd4;
+    background: $accent;
     color: white;
   }
 }
@@ -295,6 +295,14 @@ header.header {
     right: 0;
   }
 }
+
+.sign{
+  margin-top: 50px;
+  margin-left: 200px;
+  margin-right: 200px;
+
+}
+
 
 // ********************************ここまで
 
