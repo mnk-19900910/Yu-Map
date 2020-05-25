@@ -1,24 +1,11 @@
 @import "compass";
 
-/*
- * "ほのか明朝" licensed under the IPA Font License Agreement v1.0
- * http://fontfree.me/966（配布元のURL）
- * http://ipafont.ipa.go.jp/（IPAフォントのURL）
- * http://ipafont.ipa.go.jp/ipa_font_license_v1.html（IPAフォントライセンスv1.0のURL）
- */
-@font-face {
-    font-family: 'ほのか明朝';
-    src: url('font_1_honokamin.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
 
 @import url(http://fonts.googleapis.com/css?family=Unica+One);
 
-$accent: #57C3E9;
+$accent: rgb(198, 142, 23);
 $black: #292929;
 $dark: #666;
-$darkGray: #999999;
 $gray: #D8D8D8;
 $lightGray: #f5f5f3;
 $white: white;
@@ -51,7 +38,6 @@ line-height: 1.57;
   letter-spacing: 0.15em;
   font-size: 16px;
   color: $dark;
-  font-family: 'Unica One', "Avenir", "游ゴシック", "YuGothic", "ヒラギノ角ゴ Pro W6", "HIragino Kaku Gothic Pro W6", "HIragino Kaku Gothic Pro", Osaka, Meiryo, "メイリオ", "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
   margin: 0;
 }
 
@@ -68,17 +54,11 @@ a {
   font-weight: bold;
 }
 
-.serif {
-  font-family: 'ほのか明朝',serif;
-}
 
 .ultra {
   font-size: 2em !important;
 }
 
-::selection {
-  background: $gray;
-}
 
 .transition {
   @include transition-property(all);
@@ -104,19 +84,12 @@ a {
 h1,h2,h3,h4,h5,h6 {
 }
 
-.title {
-  font-weight: bold;
-}
 
-.title--big {
-  font-size: 1.5em;
-  font-weight: bold;
-  i {
-    font-style: italic;
-    font-size: 1.8em;
-  }
-}
 
+
+// ********************************ここから
+
+// ーーーーーーーーーーーーーーフッターここから
 
 header.header {
   @include basePadding;
@@ -193,33 +166,14 @@ header.header {
     }
   }
 }
-.form {
-  background: url(https://dl.dropboxusercontent.com/u/5840617/DeathtoStock_Wired3.jpg);
-  background-size: cover;
-  .contents {
-    position: absolute;
-    left: 0;
-    top: 30%;
-    bottom: 0;
-    right: 0;
-  }
-  footer {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-  }
-}
-
-// ********************************
+// ーーーーーーーーーーーーーフッターここまで
 
 .top-contents{
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 0;
-  margin-bottom: 0;
-  max-width: 660px;
+  margin-bottom: 30px;
+  max-width: 1200px;
   &__in{
     width: 100%;
     &__num{
@@ -261,7 +215,6 @@ header.header {
   }
 }
 
-
 .contents-btn{
   position: relative;
   display: inline-block;
@@ -275,8 +228,75 @@ header.header {
     color: white;
   }
 }
+.search-form {
+  text-align: center;
+  padding-top: 32px;
+  .search-input {
+    width: 30%;
+    margin-right: 10px;
+  }
 
-// ********************************
+  .search-btn {
+    width: 10%;
+  }
+}
+
+  .header-container {
+    height: 65px;
+    width: 100%;
+    box-shadow: 0 0 10px rgba($black,0.2);
+    background-color: $white;  
+    position :fixed;
+    top: 0;
+    z-index: 10;
+  }
+  
+  
+  .header-left {
+    float: left;
+    margin-left: 60px;
+    &__logo{
+      font-size: 20px;
+      line-height: 65px;
+      float: left;
+      a {
+        display: block;
+      }
+
+    }
+  }
+  
+  .header-right {
+    float: right;
+    margin-right: 100px;
+    &__log{
+      float: left;
+      transition: all 0.5s;
+      }
+  }
+  
+  .header-right a {
+    line-height: 65px;
+    padding: 0 20px;
+    display: block;
+    float: left;
+    transition: all 0.5s;
+  }
+  
+
+.form {
+  background: url(https://dl.dropboxusercontent.com/u/5840617/DeathtoStock_Wired3.jpg);
+  background-size: cover;
+  .contents {
+    position: absolute;
+    left: 0;
+    top: 30%;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+// ********************************ここまで
 
 
 div.contents.row {
@@ -290,7 +310,7 @@ div.contents.row {
     }
   }
   .new_user{
-  font-family: "游ゴシック", "YuGothic";
+  //font-family: "游ゴシック", "YuGothic";
   }
   div.content_post {
     @include boxBase(20px 0 ,30px);
@@ -353,7 +373,6 @@ div.contents.row {
       }
     }
     p {
-      @extend .serif;
       position: absolute;
       left: 30px;
       right: 100px;
@@ -408,7 +427,6 @@ form {
     @include boxBase(5px 0 15px,10px);
     border: 1px solid $gray;
     border-radius: 5px;
-    font-family: "游ゴシック", "YuGothic";
   }
   input[type="submit"] {
     @extend .transition;
@@ -439,23 +457,4 @@ form {
   }
 }
 
-footer {
-  @include boxBase;
-  color: $gray;
-  p {
-    text-align: center;
-  }
-}
 
-.search-form {
-  text-align: center;
-  padding-top: 32px;
-  .search-input {
-    width: 30%;
-    margin-right: 10px;
-  }
-
-  .search-btn {
-    width: 10%;
-  }
-}
