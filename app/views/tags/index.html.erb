@@ -1,0 +1,20 @@
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Tag</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tags.each do |tag| %>
+      <tr>
+        <td><%= tag.id %></td>
+        <td><%= tag.text %></td>
+        <td><%= link_to 'Show', tag %></td>
+        <td><%= link_to 'Destroy', tag, method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

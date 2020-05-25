@@ -8,20 +8,6 @@
 
 
 
-
-    <div class="tags">
-      <h4>＜タグ一覧＞</h4>
-      <% if @tags %>
-        <% @tags.each do |tag| %>
-          <p>
-            <%= tag.text %>
-          </p>
-        <% end %>
-      <% end %>
-    </div>
-
-
-
   <div class="container">
     <% if current_user %>
       <%= form_with(model: [@post, @kuchikomi], local: true, id: "new_kuchikomi") do |form| %>

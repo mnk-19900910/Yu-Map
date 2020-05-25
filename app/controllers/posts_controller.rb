@@ -9,6 +9,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @tag = Tag.new
   end
 
   def create
@@ -31,8 +32,10 @@ class PostsController < ApplicationController
   def show
     @kuchikomi = Kuchikomi.new
     @kuchikomis = @post.kuchikomis.includes(:user)
+    # :::::::::::::::::::::::::::::::::
     @tag = Tag.new
     @tags = @post.tags.includes(:user)
+    # :::::::::::::::::::::::::::::::::
   end
   
   def search

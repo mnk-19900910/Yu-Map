@@ -3,10 +3,12 @@ Rails.application.routes.draw do
   root to: 'posts#index'
   resources :posts do
     resources :kuchikomis, only: :create
+    
     collection do
       get 'search'
     end
   end
   resources :users, only: :show
-  resources :tags, only: [:new, :create]
+  resources :tags
+
 end
