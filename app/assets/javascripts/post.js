@@ -1,118 +1,33 @@
+let map
+let geocoder
+var centerp = {lat: 33.60639, lng: 130.41806}
 
-// let map;
-// var marker;
-//       var infoWindow;
+function initMap(){
+  geocoder = new google.maps.Geocoder()
 
-// function initMap(){
-//   geocoder = new google.maps.Geocoder()
+  map = new google.maps.Map(document.getElementById('target'), {
+    center: centerp,
+    zoom: 12,
+  });
 
-//   map = new google.maps.Map(document.getElementById('map'), {
-//     center: {lat: 33.60639, lng:130.41806},
-//     zoom: 13,
-//   });
+  marker = new google.maps.Marker({
+    position: centerp,
+    map: map
+  });
+}
 
-  // marker = new google.maps.Marker({
-  //   position:  {lat: 33.60639, lng:130.41806},
-  //   map: map,
-  //   icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
-  // });
+function codeAddress(){
+  let inputAddress = document.getElementById('address').value;
 
-
-
-
-  var map;
-  var marker;
-  var infoWindow;
-
-  function initMap() {
-
-    //マップ初期表示の位置設定
-    var target = document.getElementById('target');
-    var centerp = {lat: 33.60639, lng: 130.41806};
-
-    //マップ表示
-    map = new google.maps.Map(target, {
-      center: centerp,
-      zoom: 13
-    });
-
-    // 検索実行ボタンが押下されたとき
-    document.getElementById('map-search').addEventListener('click', function() {
-
-      var place = document.getElementById('map-keyword').value;
-      var geocoder = new google.maps.Geocoder();      // geocoderのコンストラクタ
-
-      geocoder.geocode({
-        address: place
-      }, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-
-          var bounds = new google.maps.LatLngBounds();
-
-          for (var i in results) {
-            if (results[0].geometry) {
-              // 緯度経度を取得
-              var latlng = results[0].geometry.location;
-              // 住所を取得
-              var address = results[0].formatted_address;
-              // 検索結果地が含まれるように範囲を拡大
-              bounds.extend(latlng);
-              // マーカーのセット
-              setMarker(latlng);
-              // マーカーへの吹き出しの追加
-              setInfoW(place, latlng, address);
-              // マーカーにクリックイベントを追加
-              markerEvent();
-            }
-          }
-        } else if (status == google.maps.GeocoderStatus.ZERO_RESULTS) {
-          alert("見つかりません");
-        } else {
-          console.log(status);
-          alert("エラー発生");
-        }
+  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+    if (status == 'OK') {
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location
       });
-
-    });
-
-    // 結果クリアーボタン押下時
-    document.getElementById('clear').addEventListener('click', function() {
-      deleteMakers();
-    });
-
-  }
-
-  // マーカーのセットを実施する
-  function setMarker(setplace) {
-    // 既にあるマーカーを削除
-    deleteMakers();
-
-    var iconUrl = 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png';
-      marker = new google.maps.Marker({
-        position: setplace,
-        map: map,
-        icon: iconUrl
-      });
+    } else {
+      alert('該当する結果がありませんでした：' + status);
     }
-
-    //マーカーを削除する
-    function deleteMakers() {
-      if(marker != null){
-        marker.setMap(null);
-      }
-      marker = null;
-    }
-
-    // マーカーへの吹き出しの追加
-    function setInfoW(place, latlng, address) {
-      infoWindow = new google.maps.InfoWindow({
-      content: "<a href='http://www.google.com/search?q=" + place + "' target='_blank'>" + place + "</a><br><br>" + latlng + "<br><br>" + address + "<br><br><a href='http://www.google.com/search?q=" + place + "&tbm=isch' target='_blank'>画像検索 by google</a>"
-    });
-  }
-
-  // クリックイベント
-  function markerEvent() {
-    marker.addListener('click', function() {
-      infoWindow.open(map, marker);
-    });
-  }
+  });   
+}

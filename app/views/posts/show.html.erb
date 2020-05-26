@@ -1,18 +1,17 @@
 <div class ="shows">
   <%= image_tag @post.image.to_s %>
-  <div class="shows__detail--name">温泉名：<%= @post.name %></div>
+  <div class="shows__name">温泉名：<%= @post.name %></div>
   <div class="shows__location">場所：<%= @post.location %></div>
   <a class="contents__user" href="/users/<%= @post.user.id %>">
     <div>投稿者：<%= @post.user.name %></div>
   </a>
 </div>
 
-<input type="text" id="map-keyword">
-<button id="map-search">検索実行</button>
-    <button id="clear">結果クリア</button>
 <div id='target'></div>
-
-
+<div class='map-btn'>
+<input id="address" type="textbox" value="<%= @post.location %>">
+<input type="button" value="地図を表示" onclick="codeAddress()">
+</div>
 
 <div class="container">
   <% if current_user %>

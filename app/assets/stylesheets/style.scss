@@ -195,18 +195,26 @@ header.header {
   margin-right: 300px;
 }
 
+.map-btn{
+  height: 100px;
+  width: 300px;
+  float: right;
+  margin-right: 300px;
+
+}
+
 .shows{
   float: left;
+  height: 400px;
   width: 400px;
   padding: 15px 10px;
   margin-left: 300px;
 
-  &__detail{
 
-    &--name{
+  &__name{
       text-align: center;
+      font-size: large;
     }
-  }
   &__location{
     font-size: small;
   }
