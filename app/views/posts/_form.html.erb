@@ -1,4 +1,5 @@
 <%= form.text_field :name, placeholder: " ~ 温泉" %>
+<%= form.collection_select :tag_ids, Tag.all, :id, :text, {prompt: 'Tagを選択してください'}, {class: "form-control"} %>
 <%= form.text_field :location, placeholder: "場所" %>
 <%= form.file_field :image, placeholder: "Image Url" %>
 <%= form.submit "投稿する" %>

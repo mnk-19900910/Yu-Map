@@ -7,6 +7,8 @@
   <a class="contents__user" href="/users/<%= post.user.id %>">
     <div>投稿者：<%= post.user.name %></div>
   </a>
+  
+  <%= fa_icon("tag", text: "#{post.tags&.first&.text}") if post.tags&.first&.text %>
 
   <div class="contents__change">
     <ul class="contents__change__list">

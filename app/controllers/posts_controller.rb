@@ -9,7 +9,6 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @tag = Tag.new
   end
 
   def create
@@ -32,10 +31,6 @@ class PostsController < ApplicationController
   def show
     @kuchikomi = Kuchikomi.new
     @kuchikomis = @post.kuchikomis.includes(:user)
-    # :::::::::::::::::::::::::::::::::
-    @tag = Tag.new
-    @tags = @post.tags.includes(:user)
-    # :::::::::::::::::::::::::::::::::
   end
   
   def search
@@ -48,7 +43,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:name, :location, :image).merge(user_id: current_user.id)
+    params.require(:post).permit(:name, :location, :image, :tag_ids).merge(user_id: current_user.id)
   end
 
   def set_post
