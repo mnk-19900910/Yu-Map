@@ -1,33 +1,39 @@
-<div class ="contents row">
+<div class ="shows">
   <%= image_tag @post.image.to_s %>
-  <div class="contents__detail--name">温泉名：<%= @post.name %></div>
-  <div class="contents__location">場所：<%= @post.location %></div>
+  <div class="shows__detail--name">温泉名：<%= @post.name %></div>
+  <div class="shows__location">場所：<%= @post.location %></div>
   <a class="contents__user" href="/users/<%= @post.user.id %>">
     <div>投稿者：<%= @post.user.name %></div>
   </a>
+</div>
+
+<input type="text" id="map-keyword">
+<button id="map-search">検索実行</button>
+    <button id="clear">結果クリア</button>
+<div id='target'></div>
 
 
 
-  <div class="container">
-    <% if current_user %>
-      <%= form_with(model: [@post, @kuchikomi], local: true, id: "new_kuchikomi") do |form| %>
-        <%= form.text_area :text, placeholder: "投稿する", rows: "2", class: "textbox" %>
-        <%= form.submit "SEND", class: "form__submit" %>
-      <% end %>
-    <% else %>
-      <strong><p>※※※ 口コミの投稿には新規登録/ログインが必要です ※※※</p></strong>
+<div class="container">
+  <% if current_user %>
+    <%= form_with(model: [@post, @kuchikomi], local: true, id: "new_kuchikomi") do |form| %>
+      <%= form.text_area :text, placeholder: "投稿する", rows: "2", class: "textbox" %>
+      <%= form.submit "口コミの投稿", class: "form__submit" %>
     <% end %>
-
-    <div class="kuchikomis">
-      <h4>＜口コミ一覧＞</h4>
-      <% if @kuchikomis %>
-        <% @kuchikomis.each do |kuchikomi| %>
-          <p>
-            <strong><%= link_to kuchikomi.user.name, "/users/#{kuchikomi.user_id}" %>：</strong>
-            <%= kuchikomi.text %>
-          </p>
-        <% end %>
+  <% else %>
+    <strong><p>※※※ 口コミの投稿には新規登録/ログインが必要です ※※※</p></strong>
+  <% end %>
+  <div class="kuchikomis">
+    <h4>＜口コミ一覧＞</h4>
+    <% if @kuchikomis %>
+      <% @kuchikomis.each do |kuchikomi| %>
+        <p>
+          <strong><%= link_to kuchikomi.user.name, "/users/#{kuchikomi.user_id}" %>：</strong>
+          <%= kuchikomi.text %>
+        </p>
       <% end %>
-    </div>
+    <% end %>
   </div>
 </div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJGdrtN-DDmBXydMAvXFBUf0ikgtpYsuQ&callback=initMap" async defer></script>

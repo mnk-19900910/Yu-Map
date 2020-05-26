@@ -32,6 +32,7 @@ $(function() {
     })
     .done(function(posts) {
       search_list.empty();
+      console.log(posts);
       if (posts.length !== 0) {
         posts.forEach(function(post){
           appendPost(post);

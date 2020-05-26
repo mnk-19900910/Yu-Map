@@ -187,6 +187,53 @@ header.header {
   }
 }
 
+
+#target {
+  height: 300px;
+  width: 300px;
+  float: right;
+  margin-right: 300px;
+}
+
+.shows{
+  float: left;
+  width: 400px;
+  padding: 15px 10px;
+  margin-left: 300px;
+
+  &__detail{
+
+    &--name{
+      text-align: center;
+    }
+  }
+  &__location{
+    font-size: small;
+  }
+  &__user{
+    font-size: small;
+  }
+
+  &__change{
+    margin-top: 10px;
+    &__list{
+      text-align: center;
+      li{
+        display: inline;
+        margin-right: 20px;
+      }
+    }
+  }
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
+}
+
+
+
 .contents{
   width: 33%;
   padding: 15px 10px;
@@ -445,22 +492,6 @@ form {
     font-size: 18px;
     &:hover {
       background-color: lighten($accent, 10%);
-    }
-  }
-}
-.container {
-  @include boxBase(20px 0 ,30px);
-  box-shadow: 0 0 10px rgba($black,0.2);
-  background-color: $white;
-  box-sizing: border-box;
-}
-.comments {
-  padding: 5px;
-  margin-top: 15px;
-  a {
-    color: $accent;
-    &:hover {
-      text-decoration: underline;
     }
   }
 }

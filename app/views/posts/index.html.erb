@@ -9,30 +9,6 @@
       現在<%= @posts_num.length %>件の湯処を紹介しています。
     </div>
 
-<script src="http://maps.google.com/maps/api/js?key=AIzaSyAJGdrtN-DDmBXydMAvXFBUf0ikgtpYsuQ&language=ja"></script>
-
-<style>
-html { height: 100% }
-body { height: 100% }
-#map { height: 40%; width: 50%}
-</style>
-</head>
-
-<div id="map"></div>
-
-<script>
-var MyLatLng = new google.maps.LatLng(35.6811673, 139.7670516);
-var Options = {
- zoom: 15,      //地図の縮尺値
- center: MyLatLng,    //地図の中心座標
- mapTypeId: 'roadmap'   //地図の種類
-};
-var map = new google.maps.Map(document.getElementById('map'), Options);
-</script>
-
-
-
-
     <div class="top-contents__in__main">
       <% @posts.each do |post| %>
         <%= render partial: "post", locals: { post: post } %>
