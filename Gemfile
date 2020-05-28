@@ -71,3 +71,4 @@ gem 'font-awesome-rails'
 gem 'jquery-rails'
 gem 'pg'
 gem 'rails_12factor'
+gem "aws-sdk-s3", require: false
