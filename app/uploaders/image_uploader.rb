@@ -18,6 +18,7 @@ class ImageUploader < CarrierWave::Uploader::Base
       }
       config.fog_directory     =  ENV['S3_BUCKET']
     end
+  end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
