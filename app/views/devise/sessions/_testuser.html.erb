@@ -4,20 +4,20 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <em>メールアドレス</em><br /><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, value: "test@test" %>
   </div>
 
   <div class="field">
     <em>パスワード</em><br /><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.password_field :password, value: "testtest" %>
   </div>
 
 
   <div class="actions">
-    <%= f.submit "ログインする" %>
+    <%= f.submit "テストユーザログイン" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
-<%= render "devise/sessions/testuser" %>
+
 </div>
