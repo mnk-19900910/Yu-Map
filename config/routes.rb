@@ -10,5 +10,4 @@ Rails.application.routes.draw do
   end
   resources :users, only: :show
   resources :tags
-  resources :testsessions, only: :create
 end
