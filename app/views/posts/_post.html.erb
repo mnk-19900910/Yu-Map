@@ -20,7 +20,7 @@
           <% end %>
         </li>
         <li>
-          <%= link_to "/posts/#{post.id}", method: :delete, class: 'contents-btn' do %>
+          <%= link_to "/posts/#{post.id}", method: :delete, data: {confirm: "温泉名:#{post.name}を削除しますか？"}, class: 'contents-btn' do %>
             <i class="fa fa-caret-right"></i>
             <span>削除</span>
           <% end %>
