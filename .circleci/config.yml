@@ -12,22 +12,8 @@ jobs:
     steps:
       - checkout
 
-      - run:
-          name: setup bundler
-          command: |
-            sudo gem update --system
-            sudo gem uninstall bundler
-            sudo rm /usr/local/bin/bundle
-            sudo rm /usr/local/bin/bundler
-            sudo gem install bundler
-
-      - run:
-          name: bundler install
-          command: |
-            gem install bundler
-      - ruby/bundle-install
-      
-      - run:
-          name: install dependencies
-          command: |
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
+    - run:
+        name: install dependencies
+        command: |
+          gem install bundler -v 2.0.2
+          bundle install --jobs=4 --retry=3 --path vendor/bundle
