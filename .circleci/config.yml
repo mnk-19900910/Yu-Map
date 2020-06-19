@@ -1,15 +1,15 @@
+version: 2.1
+orbs:
+  ruby: circleci/ruby@0.1.2 
+
 jobs:
-  deploy:
-    executor: heroku/default
+  build:
+    docker:
+      - image: circleci/ruby:2.6.3-stretch-node
+    executor: ruby/default
     steps:
       - checkout
-      - heroku/install
       - run:
-          command: >
-            echo "The command above installs Heroku, the command below deploys.
-            What you do inbetween is up to you!"
-      - heroku/deploy-via-git
-workflows:
-  heroku_deploy:
-    jobs:
-      - deploy
+          name: Which bundler?
+          command: bundle -v
+      - ruby/bundle-install
