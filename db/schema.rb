@@ -34,13 +34,11 @@ ActiveRecord::Schema.define(version: 2020_05_28_085019) do
   end
 
   create_table "kuchikomis", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
     t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id"
-    t.bigint "post_id"
-    t.index ["post_id"], name: "index_kuchikomis_on_post_id"
-    t.index ["user_id"], name: "index_kuchikomis_on_user_id"
   end
 
   create_table "post_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -58,9 +56,8 @@ ActiveRecord::Schema.define(version: 2020_05_28_085019) do
     t.text "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
+    t.integer "user_id"
     t.index ["name"], name: "index_posts_on_name", length: 32
-    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -84,8 +81,6 @@ ActiveRecord::Schema.define(version: 2020_05_28_085019) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "kuchikomis", "posts"
-  add_foreign_key "kuchikomis", "users"
   add_foreign_key "post_tags", "posts"
   add_foreign_key "post_tags", "tags"
 end
